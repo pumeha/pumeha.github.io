@@ -252,17 +252,41 @@
     }
 </script>
 <script>
-    document.getElementById("loadScriptBtn").addEventListener("click", function() {
-      // Create a script element
-      var script = document.createElement("script");
-      script.src = "flutter_bootstrap.js"; // Specify the script's source
-      script.async = true; // Set async attribute to true
-      document.body.appendChild(script); // Append the script to the body
+  document.getElementById("loadScriptBtn").addEventListener("click", function () {
+    // Show the loader and hide the button
+    document.getElementById('loader').style.display = 'block';
+    document.querySelector('.get-started-btn').style.display = 'none';
+
+    // Load Flutter app using the new loader
+    _flutter.loader.load({
+      onEntrypointLoaded: async function(engineInitializer) {
+        document.getElementById('loader').textContent = 'Initializing engine...';
+        const appRunner = await engineInitializer.initializeEngine();
+        document.getElementById('loader').textContent = 'Running app...';
+        await appRunner.runApp();
+      }
     });
+  });
 </script>
+
 
 <!-- Font Awesome for user icon -->
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script>
+  if (!window._flutter) {
+    window._flutter = {};
+  }
+  _flutter.buildConfig = {
+    engineRevision: "a18df97ca57a249df5d8d68cd0820600223ce262",
+    builds: [
+      {
+        compileTarget: "dart2js",
+        renderer: "canvaskit",
+        mainJsPath: "main.dart.js"
+      }
+    ]
+  };
+</script>
 
 </body>
 </html>
