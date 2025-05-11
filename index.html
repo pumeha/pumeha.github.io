@@ -99,9 +99,49 @@
       gap: 24px;
     }
 
+    /* Adjust font size for smaller devices */
+    @media (max-width: 767px) {
+      body {
+        font-size: 14px;  /* Adjust font size for mobile */
+      }
+
+      .welcome-note p {
+        font-size: 18px; /* Smaller text size for mobile */
+      }
+
+      .features h2 {
+        font-size: 20px; /* Smaller header text */
+      }
+
+      .feature-card h3 {
+        font-size: 16px; /* Smaller sub-header font size */
+      }
+
+      .feature-card p {
+        font-size: 14px; /* Smaller paragraph font size */
+      }
+
+      .feature-cards {
+        grid-template-columns: 1fr; /* Single column on mobile */
+      }
+
+      .feature-card {
+        padding: 12px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+      }
+
+      .get-started-btn {
+        font-size: 16px; /* Smaller button font size */
+        padding: 10px;
+        bottom: 10px; /* Adjust button position */
+      }
+    }
+
     @media (min-width: 768px) {
       .feature-cards {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Two columns on tablet and larger screens */
       }
     }
 
