@@ -293,7 +293,11 @@
   </section>
 
   <main>
-  <section class="features">
+    <div id="loader" style="display: none; text-align: center; margin-top: 20px;">
+      <p>Loading app...</p>
+    </div>
+
+    <section class="features">
     <h2>Features of Activity Guide</h2>
     <div class="feature-cards">
       <div class="feature-card">
@@ -338,7 +342,7 @@
   </section>
 </div>
 
-
+<script src="flutter.js"></script>
 <script>
   function toggleMenu() {
     document.getElementById('navMenu').classList.toggle('open');
@@ -347,6 +351,8 @@
   function triggerFlutterWeb() {
     const loader = document.getElementById('loader');
     loader.style.display = 'block';
+    document.querySelector('main').style.display = 'none';
+
 
     _flutter.buildConfig = {
       engineRevision: "a18df97ca57a249df5d8d68cd0820600223ce262",
