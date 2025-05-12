@@ -1,311 +1,313 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <base href="/">
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A new Flutter project.">
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A smarter way to plan your projects.">
+    <link rel="icon" type="image/png" href="favicon.png"/>
+    <title>Activity Guide</title>
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="activity_guide">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <style>
+    :root {
+      --primary-color: #067329;
+      --accent-color: #055d26;
+      --bg-color: #f3f4f6;
+      --text-color: #333;
+      --card-bg: #fff;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-  <title>Activity Guide</title>
-  <link rel="manifest" href="manifest.json">
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --card-bg: #1e1e1e;
+      --shadow: rgba(0, 0, 0, 0.4);
+    }
 
-  <style>
-    * {
+    html, body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-image: url('assets/images/background.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
       font-family: 'Roboto', sans-serif;
-      color: #333;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      background: var(--card-bg);
+      box-shadow: 0 2px 4px var(--shadow);
       padding: 20px 36px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .appbar {
-      background-color: #ffffff;
-      padding: 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       position: sticky;
       top: 0;
-      margin-bottom: 16px;
+      z-index: 10;
+      transition: background 0.3s;
     }
 
-    .appbar .title {
+    .logo {
       font-size: 24px;
-      font-weight: bold;
-      color: #067329;
+      font-weight: 700;
+      color: var(--primary-color);
     }
 
-    .appbar .title span {
-      background-color: #067329;
+    .logo span {
+      background: var(--primary-color);
       color: white;
       padding: 4px 8px;
+      border-radius: 4px;
     }
 
-    .launch-btn {
-      background-color: #067329;
-      color: white;
+    .launch-btn, .get-started-btn, .toggle-mode {
+      background-color: var(--primary-color);
+      color: #fff;
       border: none;
-      padding: 8px 16px;
-      border-radius: 20px;
+      padding: 10px 20px;
+      border-radius: 24px;
       font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      margin-left: 10px;
+      transition: background-color 0.3s, transform 0.2s;
     }
 
-    .launch-btn:hover {
-      background-color: #055d26;
+    .launch-btn:hover,
+    .get-started-btn:hover,
+    .toggle-mode:hover {
+      background-color: var(--accent-color);
+      transform: scale(1.05);
     }
 
-    .welcome-note p {
-      font-size: 24px;
-      font-weight: 600;
-      text-align: justify;
-      margin-bottom: 24px;
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .welcome-section {
+      text-align: center;
+      margin-bottom: 48px;
+      animation: fadeInUp 0.8s ease-out both;
+    }
+
+    .welcome-section h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--primary-color);
+    }
+
+    .welcome-section p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--text-color);
+    }
+
+    .features {
+      text-align: center;
+      margin-bottom: 48px;
     }
 
     .features h2 {
-      font-size: 24px;
-      color: #067329;
-      font-weight: bold;
-      text-align: center;
+      font-size: 28px;
+      color: var(--primary-color);
       margin-bottom: 24px;
     }
 
-    .feature-cards {
+    .feature-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 24px;
-    }
-
-    /* Adjust font size for smaller devices */
-    @media (max-width: 767px) {
-      body {
-        font-size: 14px;  /* Adjust font size for mobile */
-      }
-
-      .welcome-note p {
-        font-size: 18px; /* Smaller text size for mobile */
-      }
-
-      .features h2 {
-        font-size: 20px; /* Smaller header text */
-      }
-
-      .feature-card h3 {
-        font-size: 16px; /* Smaller sub-header font size */
-      }
-
-      .feature-card p {
-        font-size: 14px; /* Smaller paragraph font size */
-      }
-
-      .feature-cards {
-        grid-template-columns: 1fr; /* Single column on mobile */
-      }
-
-      .feature-card {
-        padding: 12px;
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-      }
-
-      .get-started-btn {
-        font-size: 16px; /* Smaller button font size */
-        padding: 10px;
-        bottom: 10px; /* Adjust button position */
-      }
-    }
-
-    @media (min-width: 768px) {
-      .feature-cards {
-        grid-template-columns: repeat(2, 1fr); /* Two columns on tablet and larger screens */
-      }
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 
     .feature-card {
-      padding: 16px;
-      background-color: #f9f9f9;
-      border: 1px solid #ddd;
-      border-radius: 8px;
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px var(--shadow);
+      text-align: left;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+      transition: transform 0.3s;
+    }
+
+    .feature-card:nth-child(1) { animation-delay: 0.2s; }
+    .feature-card:nth-child(2) { animation-delay: 0.4s; }
+    .feature-card:nth-child(3) { animation-delay: 0.6s; }
+    .feature-card:nth-child(4) { animation-delay: 0.8s; }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
     }
 
     .feature-card h3 {
-      font-size: 18px;
-      font-weight: bold;
-      color: #067329;
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: var(--primary-color);
     }
 
     .feature-card p {
       font-size: 16px;
-      color: #555;
-      text-align: justify;
-      margin-top: 8px;
+      color: var(--text-color);
     }
 
-    .footer {
-      margin-top: 50px;
+    footer {
       text-align: center;
-    }
-
-    .footer p {
-      font-size: 18px;
+      padding: 40px 20px;
+      background: var(--card-bg);
+      border-top: 1px solid #ccc;
+      margin-top: 60px;
+      transition: background 0.3s;
     }
 
     .company-name {
-      font-size: 24px;
-      font-weight: bold;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--primary-color);
     }
 
     .get-started-btn {
       position: fixed;
-      right: 20px;
-      bottom: 20px;
-      background-color: #067329;
-      color: white;
-      font-size: 18px;
-      border: none;
-      border-radius: 25px;
-      padding: 12px;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s;
-    }
-
-    .get-started-btn:hover {
-      background-color: #055d26;
+      right: 24px;
+      bottom: 24px;
+      padding: 14px 24px;
+      border-radius: 28px;
+      box-shadow: 0 4px 8px var(--shadow);
     }
 
     .loader {
-      box-sizing: border-box;
-      position: absolute;
+      display: none;
+      position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 48px;
       height: 48px;
-      animation: spin 1s linear infinite;
-      margin-top: 20px;
-      display: none;
-    }
-
-    .loader:after, .loader:before {
-      content: "";
-      width: 24px;
-      height: 24px;
-      position: absolute;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid var(--primary-color);
       border-radius: 50%;
-      background: #FF3D00;
       animation: spin 1s linear infinite;
-      transform-origin: 0px 100%;
-    }
-
-    .loader:before {
-      transform-origin: 0 50%;
-      background: #008000;
     }
 
     @keyframes spin {
-      to {
-        transform: rotate(360deg);
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .welcome-section h1 {
+        font-size: 28px;
+      }
+      .features h2 {
+        font-size: 24px;
+      }
+      .feature-card h3 {
+        font-size: 18px;
       }
     }
   </style>
-  <script src="flutter.js" defer></script>
+    <script src="flutter.js" defer></script>
 </head>
 <body>
 
-<div>
-  <div class="appbar">
-    <div class="title">
-      <span>ACTIVITY</span> GUIDE
+<header>
+    <div class="logo"><span>ACTIVITY</span> GUIDE</div>
+    <div>
+        <button class="launch-btn" onclick="triggerFlutterWeb()">Launch App</button>
+        <button class="toggle-mode" onclick="toggleDarkMode()">🌙</button>
     </div>
-    <button class="launch-btn" onclick="triggerFlutterWeb()">Launch App</button>
-  </div>
+</header>
 
-  <div class="container">
-    <section class="welcome-note">
-      <p>Welcome to Activity Guide. Our app provides essential tools for effective project management, from comprehensive activity templates to real-time dashboards, ensuring your corporate planning runs smoothly.</p>
+<main>
+    <section class="welcome-section">
+        <h1>Welcome to Activity Guide</h1>
+        <p>Plan, track, and manage your projects efficiently with real-time dashboards, dynamic templates, and stakeholder engagement tools.</p>
     </section>
 
     <section class="features">
-      <h2>Features of Activity Guide</h2>
-      <div class="feature-cards">
-        <div class="feature-card">
-          <h3>Activity Guide Template</h3>
-          <p>Leverage our customizable activity templates designed to meet your specific project needs, ensuring you have the right structure for effective planning.</p>
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Activity Templates</h3>
+                <p>Customizable templates that provide structure and flexibility for your workflows.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Real-time Dashboard</h3>
+                <p>Visualize project performance and team activity in real-time.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Feedback Collection</h3>
+                <p>Gather input and responses from team members and stakeholders.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Notification Alerts</h3>
+                <p>Never miss a beat with configurable project alerts and updates.</p>
+            </div>
         </div>
-        <div class="feature-card">
-          <h3>Real-time Dashboard</h3>
-          <p>Our user-friendly dashboard provides real-time updates and insights into your project’s progress, allowing for quick adjustments and informed decision-making.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Feedback Collection</h3>
-          <p>We facilitate easy feedback collection from stakeholders, ensuring you gather valuable insights that drive project improvements and success.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Notification Alerts</h3>
-          <p>Stay informed with our notification system that alerts you to important updates and deadlines, helping you manage your projects proactively.</p>
-        </div>
-      </div>
     </section>
+</main>
 
-    <section class="footer">
-      <p>Powered by</p>
-      <p class="company-name">SmarterWay Solutions Ltd</p>
-    </section>
+<footer>
+    <p>Powered by</p>
+    <p class="company-name">SmarterWay Solutions Ltd</p>
+</footer>
 
-    <div class="loader" id="loader"></div>
-  </div>
-</div>
+<button class="get-started-btn" onclick="triggerFlutterWeb()">Get Started</button>
+<div class="loader" id="loader"></div>
 
 <script>
   function triggerFlutterWeb() {
-    const loading = document.getElementById('loader');
-    loading.style.display = 'block'; // Show loader
+    const loader = document.getElementById('loader');
+    loader.style.display = 'block';
 
     _flutter.buildConfig = {
-      "engineRevision": "a18df97ca57a249df5d8d68cd0820600223ce262",
-      "builds": [
-        {
-          "compileTarget": "dart2js",
-          "renderer": "canvaskit",
-          "mainJsPath": "main.dart.js"
-        }
-      ]
+      engineRevision: "a18df97ca57a249df5d8d68cd0820600223ce262",
+      builds: [{
+        compileTarget: "dart2js",
+        renderer: "canvaskit",
+        mainJsPath: "main.dart.js"
+      }]
     };
 
     _flutter.loader.load({
       onEntrypointLoaded: async function(engineInitializer) {
         const appRunner = await engineInitializer.initializeEngine();
         await appRunner.runApp();
-        loading.style.display = 'none'; // Hide loader
+        loader.style.display = 'none';
       }
     });
   }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+  }
+
+  // Apply theme based on saved preference or system preference
+  window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (saved === 'dark' || (!saved && prefersDark)) {
+      document.body.classList.add('dark');
+    }
+  });
 </script>
 
 </body>
