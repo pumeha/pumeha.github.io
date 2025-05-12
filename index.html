@@ -297,7 +297,7 @@
   <section class="welcome-note">
     <p>Welcome to Activity Guide. Our app provides essential tools for effective project management, from comprehensive activity templates to real-time dashboards, ensuring your corporate planning runs smoothly.</p>
     <div style="margin-top: 16px;">
-      <button class="launch-btn" onclick="triggerFlutterWeb()">Launch App</button>
+      <button class="launch-btn" id="launchButton" onclick="triggerFlutterWeb()">Launch App</button>
     </div>
   </section>
 
@@ -355,6 +355,8 @@
 <script>
 
 function triggerFlutterWeb() {
+    // Hide the launch button
+  document.getElementById('launchButton').style.display = 'none';
   const loader = document.getElementById('loader');
   loader.style.display = 'block';
 
