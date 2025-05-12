@@ -348,29 +348,34 @@
     document.getElementById('navMenu').classList.toggle('open');
   }
 
-  function triggerFlutterWeb() {
-    const loader = document.getElementById('loader');
-    loader.style.display = 'block';
-    document.querySelector('main').style.display = 'none';
+function triggerFlutterWeb() {
+  const loader = document.getElementById('loader');
+  loader.style.display = 'block';
 
+  _flutter.buildConfig = {
+    engineRevision: "a18df97ca57a249df5d8d68cd0820600223ce262",
+    builds: [{
+      compileTarget: "dart2js",
+      renderer: "canvaskit",
+      mainJsPath: "main.dart.js"
+    }]
+  };
 
-    _flutter.buildConfig = {
-      engineRevision: "a18df97ca57a249df5d8d68cd0820600223ce262",
-      builds: [{
-        compileTarget: "dart2js",
-        renderer: "canvaskit",
-        mainJsPath: "main.dart.js"
-      }]
-    };
+  _flutter.loader.load({
+    onEntrypointLoaded: async function(engineInitializer) {
+      const appRunner = await engineInitializer.initializeEngine();
+      await appRunner.runApp();
 
-    _flutter.loader.load({
-      onEntrypointLoaded: async function(engineInitializer) {
-        const appRunner = await engineInitializer.initializeEngine();
-        await appRunner.runApp();
-        loader.style.display = 'none';
-      }
-    });
-  }
+      // Hide the loader
+      loader.style.display = 'none';
+
+      // ✅ Hide the nav bar AFTER the Flutter app has loaded
+      document.querySelector('.appbar').style.display = 'none';
+      document.querySelector('.nav-menu').style.display = 'none';
+    }
+  });
+}
+
 
   function toggleDarkMode() {
     document.body.classList.toggle('dark');
