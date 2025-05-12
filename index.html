@@ -226,27 +226,21 @@
       font-size: 20px;
     }
 
-    @media (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
+@media (max-width: 768px) {
+  .hamburger {
+    display: none;
+  }
 
-      .nav-menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 64px;
-        right: 0;
-        background-color: var(--bg);
-        width: 100%;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        padding: 16px;
-      }
+  .nav-menu {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    width: auto;
+    box-shadow: none;
+    padding: 0;
+  }
+}
 
-      .nav-menu.open {
-        display: flex;
-      }
-    }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -276,13 +270,11 @@
   <div class="title">
     <span>ACTIVITY</span> GUIDE
   </div>
-  <button class="hamburger" onclick="toggleMenu()">☰</button>
-  <nav class="nav-menu" id="navMenu">
-
-<!--    <button class="launch-btn" onclick="triggerFlutterWeb()">Launch App</button>-->
+  <div class="nav-menu">
     <span class="dark-toggle" onclick="toggleDarkMode()">🌙</span>
-  </nav>
+  </div>
 </div>
+
 
 <div class="container">
   <section class="welcome-note">
@@ -344,9 +336,6 @@
 
 <script src="flutter.js"></script>
 <script>
-  function toggleMenu() {
-    document.getElementById('navMenu').classList.toggle('open');
-  }
 
 function triggerFlutterWeb() {
   const loader = document.getElementById('loader');
