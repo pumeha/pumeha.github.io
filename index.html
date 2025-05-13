@@ -285,37 +285,10 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
-    
-    #flutter-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--bg);
-  z-index: 9999;
-}
-    @keyframes slideInFromRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-#flutter-container.slide-in {
-  animation: slideInFromRight 0.8s ease-out forwards;
-}
-
-
 
   </style>
 </head>
 <body>
-  
 <div class="appbar">
   <div class="title">
     <span>ACTIVITY</span> GUIDE
@@ -405,26 +378,14 @@ function triggerFlutterWeb() {
   _flutter.loader.load({
     onEntrypointLoaded: async function(engineInitializer) {
       const appRunner = await engineInitializer.initializeEngine();
-await appRunner.runApp();
+      await appRunner.runApp();
 
-loader.style.display = 'none';
-document.querySelector('.appbar').style.display = 'none';
-document.querySelector('.nav-menu').style.display = 'none';
+      // Hide the loader
+      loader.style.display = 'none';
 
-const flutterContainer = document.getElementById('flutter-container');
-flutterContainer.style.display = 'block';
-
-// 🔄 Move the Flutter canvas into the flutter-container
-const canvases = document.getElementsByTagName('canvas');
-if (canvases.length > 0) {
-  flutterContainer.appendChild(canvases[0]); // Move the first canvas
-}
-
-// ✨ Add animation
-setTimeout(() => {
-  flutterContainer.classList.add('slide-in');
-}, 100);
-
+      // ✅ Hide the nav bar AFTER the Flutter app has loaded
+      document.querySelector('.appbar').style.display = 'none';
+      document.querySelector('.nav-menu').style.display = 'none';
     }
   });
 }
@@ -444,7 +405,5 @@ setTimeout(() => {
     }
   });
 </script>
-  <div id="flutter-container" style="display:none; opacity:0; width:100%; height:100vh;"></div>
-
 </body>
 </html>
