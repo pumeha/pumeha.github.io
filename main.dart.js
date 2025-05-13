@@ -50639,7 +50639,7 @@ $0(){A.ms(this.a,"/login")},
 $S:0}
 A.Ft.prototype={
 M(){var s=$.ah()
-return new A.a2W(new A.dE(new A.cz("mikeshedrack88@gmail.com",B.bq,B.au),s),new A.dE(new A.cz("Shedrack88@",B.bq,B.au),s))}}
+return new A.a2W(new A.dE(new A.cz("smarterway2024@gmail.com",B.bq,B.au),s),new A.dE(new A.cz("Smarter1@",B.bq,B.au),s))}}
 A.a2W.prototype={
 F(a){var s=this,r=null,q=$.b4j(),p=t.p,o=A.bn(A.a([A.aH(" ACTIVITY ",r,r,r,r,r,A.cf(r,B.aE,B.i,r,r,r,r,r,r,r,r,36,r,r,B.N,r,r,!0,r,r,r,r,r,r,r,r),r,r),A.aH("GUIDE",r,r,r,r,r,A.cf(r,r,B.aE,r,r,r,r,r,r,r,r,36,r,r,B.N,r,r,!0,r,r,r,r,r,r,r,r),r,r)],p),B.m,r,B.aq,B.o),n=A.bn(A.a([A.aH("Login",r,r,r,r,r,A.b_0().$2$fontSize$fontWeight(30,B.N),r,r)],p),B.m,r,B.v,B.o),m=A.f0(!1,s.d,r,A.h7(r,new A.d5(4,A.eS(20),B.cG),r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r,r,r,r,r,new A.d5(4,A.eS(20),new A.aK(B.at,1,B.q,-1)),r,r,r,r,r,r,r,r,"abc@domain.com",r,r,r,r,r,r,r,r,"Email",r,r,r,r,r,r,r,r,r,r,r,r,r),r,r,r,r,r,r,1,r,!1,r,r,r,r,new A.aIA()),l=s.f,k=A.eS(20),j=A.eS(20),i=l?A.cO(B.qn,r,r,r,r):A.cO(B.lj,r,r,r,r)
 return A.eY(r,r,A.hJ(r,A.bt(r,A.c_(A.bt(r,A.k3(A.mO(r,A.ci(A.a([o,B.mO,n,B.jA,m,B.jA,A.f0(!1,s.e,r,A.h7(r,new A.d5(4,k,B.cG),r,r,r,r,r,r,!0,r,r,r,r,r,r,B.i,r,r,r,r,r,new A.d5(4,j,new A.aK(B.at,1,B.q,-1)),r,r,r,r,r,r,r,r,"********",r,r,r,r,r,r,r,r,"Password",r,r,r,r,r,r,r,r,A.e0(r,r,r,i,r,r,new A.aIB(s),r,r,r,r),r,r,r,r),r,r,r,r,B.Yz,r,1,r,l,r,r,r,r,new A.aIC()),B.jA,A.bn(A.a([A.dR(B.Jf,r,new A.aID(a),r)],p),B.m,r,B.bX,B.o),B.jA,A.ky(!1,r,!0,A.bt(B.E,B.J7,B.n,r,r,new A.bI(B.at,r,r,A.eS(20),r,r,B.Y),r,r,r,r,B.ih,r,r,17976931348623157e292),r,!0,r,r,r,r,r,r,r,r,r,r,new A.aIE(s,a),r,r,r,r,r)],p),B.m,B.aq,B.o),q),r,B.M,r,r,r,B.T),B.n,r,B.hM,r,r,r,r,r,B.il,r,r,r),r,r),B.n,r,r,B.hN,r,r,r,r,r,r,r,r),r,new A.aIF(),t.Rv,t.ZV),r,r,!1,r,r,r,r)}}
