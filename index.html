@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A beautiful Material Design Flutter landing page">
@@ -200,6 +201,7 @@
       font-size: 24px;
       font-weight: bold;
     }
+
     .get-started-btn {
       position: fixed;
       right: 20px;
@@ -213,9 +215,11 @@
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
     .get-started-btn:hover {
       background-color: var(--primary-dark);
     }
+
     .dark-toggle {
       margin-left: 16px;
       cursor: pointer;
@@ -253,15 +257,19 @@
     padding: 0;
   }
 }
-      @keyframes fadeIn {
+
+
+    @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-      @keyframes slideUp {
+
+    @keyframes slideUp {
       from { opacity: 0; transform: translateY(50px); }
       to { opacity: 1; transform: translateY(0); }
     }
-       @media (max-width: 600px) {
+
+    @media (max-width: 600px) {
       .welcome-section h1 {
         font-size: 28px;
       }
@@ -277,8 +285,9 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
-     </style>
-     </head>
+
+  </style>
+</head>
 <body>
 <div class="appbar">
   <div class="title">
@@ -379,13 +388,15 @@ function triggerFlutterWeb() {
       document.querySelector('.nav-menu').style.display = 'none';
     }
   });
+}
 
-   function toggleDarkMode() {
+
+  function toggleDarkMode() {
     document.body.classList.toggle('dark');
     localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
   }
 
-   // Apply theme based on saved preference or system preference
+  // Apply theme based on saved preference or system preference
   window.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -394,6 +405,5 @@ function triggerFlutterWeb() {
     }
   });
 </script>
-
-  </body>
+</body>
 </html>
